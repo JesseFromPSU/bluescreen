@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+	Author: Jesse Steltz
+	Purpose: This web app displays cancellations and bluescreen messages for Penn State Wilkes-Barre
+-->
+
+<title>Penn State</title>
+<head>
+	<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=Pj4an4PKnviOvaCpyR44pP3D5U6nQOqvZK31IKPDxooEQdpn5plht96k8ln6hfh70uKYjHcv5XcZzHO6nV_TQ3ThE76oQAHnb2rUL807tCS7y4SSvKf12W3vvzcS0wb1DK3YlsxBmIdOwopNvazqDlSAsqog7_UauJh1fHwf7UYe1Y6owoSHZAXR5a9ksy8fwikKfqyKDbLruNG1LfW4hNGeex57MbuTGOi0JWDGTdePYV0pQjptGXl2EBtEw5E6052SzWa9UeZrE7aUVaM5R1irH5uVTlICdWG-PM44g6AGT6onZs78O394Z3fWuW3Ko7izOUX9vkoJxOmik-7iPKKe7OV_-x4a5GxwILZD4PIzRGE-Xrs1u95__7uBaMzKJchZK7ZA6sv6nUf4j87xNQnNNZuIuLW4AE_U_wU2Wj20ECMJpeVKdhIircW2EiUy8-IYDJp8U_hCbwiOzvFynS_EPtnQU0JHKtg7EpUM-y5Gnme8R-Z23LuNFZOTWBOfSF7tje1lEBrmOY77AQfjcm9dsHph1HDRxhAfc2pL1KzOSZSPzoRPHVlizack3ysR2oKwHvtFE45nKTH4nKyg0gtsVGYyEEkSRfKSGp7_bCtNAzkXhk8cfly5QAtrOoWy35GzZKyj55iF23M1JB619ZDzd6chRFIkFY9yYaJZKCQ0Dyx0jZhU7DMxIwgRCvpXKfDq2fFdZ5gjrpGPyceGMwRFPGQbVv5Ijb_gIu351-QDXH0X0o0-IZOebmmAvmr_9Mt6XnR7udHzT6mHA_Amgayu0UdGD8-6U1-NJvYRcKidICh8JgPayAxGXatvydLwk3GrWGhAd0WfhOHihS6P-Jc7XVQhHe8iMLjDrlDh08oNS5OZ09xb4Rs5E1ajcvcTVguZpZyK8Q-MIEZR_afRFPKD_UTmWKPV7tvvJ202k0tOv5jqwkUJMV7I8_niYdfvn7UcrPZ6roG2IyD7bCLCNMWbijKYB-u5qE-u2RGus2BWU4HynaRhBfzxwzibMdkNJ18LwlbxuhKPGxJQnwcB2cJ8s2_u1M4uCJ0GKvUUSRvwxGUF_ukbPBSnFRyQ_1RcBzBUG2xwcafFRvLyq3Cuz1TkakFYSW5xWNhNi1oow_IpCKTVBpfvwfQMfAevEbkG4XFS6qNRUcYzIG6gZHl0GmLMhuIeuPewpqRE7lUBe-3K2TsTroQlVMxJQjdnK_9g0cBjRQYHWywqR01J2lXkQw" nonce="a579d34e5386ff4ffd19f157dea71ec7" charset="UTF-8"></script><center>Penn State Messages</center>
+	<center>
+		<img src="https://wilkesbarre.psu.edu/sites/wilkesbarre/files/styles/header_logo_desktop/public/logos/psu_wb_rgb_2c_3x_1_0.png?itok=Zjw7xCYF">
+	</center>
+	<!-- pwa (progressive web app) - scale web site to mobile device's screen -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- style sheet and libraries -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+	<!-- placing icons on home screen -->
+	<link rel="apple-touch-icon" sizes="152x152" href="hi.png">
+	<link rel="icon" sizes="192x192" href="hi.png">
+
+	<!-- eliminate URL above app -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+
+	<!-- Style sheet for formatting -->
+	<style>
+	body{
+		background-color: #60dee5;
+	}
+
+	img{
+		width: 50%;
+	}
+	</style>
+
+</head>
+<body background-color="#60dee5">
+	<center>
+	
+
+		
+		
+		
+		<!-- Bluescreen Messages Button -->
+		<input type='button' class='btn btn-lg btn-primary' value='Bluescreen Messages' onclick='bsMsg()'; />
+
+		<!-- Class Cancellations Button -->
+		<input type='button' class='btn btn-lg btn-primary' value='Class Cancellations' onclick='classCancel()'; />
+		
+		<p id='dateDisplay'>
+		<script>
+			// This script displays the current date including month, day, and time
+			var date;
+			var d = new Date();
+			var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+			var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+			
+			var day = days[d.getDay()];
+			var month = months[d.getMonth()];
+			var dayNum = d.getDate();
+			var hour = d.getHours();
+			var min = d.getMinutes();
+			var addMin = "";
+			var amPM;
+
+			// adjusts for AM and PM and sets hours to 1-12 AM/PM
+			if(d.getHours() > 12)
+			{
+				amPM = "PM"
+				hour -= 12;
+			}
+			else if(d.getHours == 0)
+			{
+				hour = 12;
+				amPM = "AM"
+			}
+			else
+			{
+				amPM = "AM"
+			}
+			
+			// adjusts format for time when minutes are less than 10
+			if(min < 10)
+			{
+				addMin = "0";
+			}
+			
+			
+			date += day + "<br>" + month + " " + dayNum + ", " + hour + ":" + addMin + min + " " + amPM + "<br>";
+			document.getElementById('dateDisplay').innerHTML = day + "<br>" + month + " " + dayNum + ", " + hour + ":" + addMin + min + " " + amPM + "<br>";
+		
+		</script>
+		
+		<hr />
+		
+		<p id='displayText'>
+		
+		
+		<script type="text/javascript">
+			// this function displays the bluescreen messages from the XML file
+			function bsMsg() {
+			
+			// from: http://www.w3schools.com/xml/xml_to_html.asp
+			if (window.XMLHttpRequest)
+				{// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+			}
+			else
+			{// code for IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+				xmlhttp.open("GET","https://cors-anywhere.herokuapp.com/https://www2.wb.psu.edu/messageboard/xml.asp",false);
+				xmlhttp.send();
+				xmlDoc=xmlhttp.responseXML;
+			
+				var output=" ";
+				var x=xmlDoc.getElementsByTagName("Message");
+				var i;
+				// goes through each line to skip blank lines
+				for (i=0;i<x.length;i++) {
+				
+					if (x[i].getElementsByTagName("Line1")[0].childNodes.length){
+						output +=(x[i].getElementsByTagName("Line1")[0].childNodes[0].nodeValue + "<br>");
+					}
+					
+					if (x[i].getElementsByTagName("Line2")[0].childNodes.length){
+						output +=(x[i].getElementsByTagName("Line2")[0].childNodes[0].nodeValue + "<br>");
+					}
+					
+					if (x[i].getElementsByTagName("Line3")[0].childNodes.length){
+						output +=(x[i].getElementsByTagName("Line3")[0].childNodes[0].nodeValue + "<br>");
+					}
+					
+					if (x[i].getElementsByTagName("Line4")[0].childNodes.length){
+						output +=(x[i].getElementsByTagName("Line4")[0].childNodes[0].nodeValue + "<br>");
+					}
+					
+					if (x[i].getElementsByTagName("Line5")[0].childNodes.length){
+						output +=(x[i].getElementsByTagName("Line5")[0].childNodes[0].nodeValue + "<br>");
+					}
+					
+					if (x[i].getElementsByTagName("Line6")[0].childNodes.length){
+						output +=(x[i].getElementsByTagName("Line6")[0].childNodes[0].nodeValue + "<br>");
+					}
+					
+					if (x[i].getElementsByTagName("Line7")[0].childNodes.length){
+						output +=(x[i].getElementsByTagName("Line7")[0].childNodes[0].nodeValue + "<br>");
+					}
+					
+					output += "<hr />"
+			
+			}
+			
+					document.getElementById('displayText').innerHTML = output;
+			
+			}
+			
+			// this function displays class cancellations from the XML file
+			function classCancel() {
+			
+				if (window.XMLHttpRequest)
+					{// code for IE7+, Firefox, Chrome, Opera, Safari
+					xmlhttp=new XMLHttpRequest();
+				}
+				else
+				{// code for IE6, IE5
+					xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlhttp.open("GET","https://cors-anywhere.herokuapp.com/https://www2.wb.psu.edu/messageboard/cancelxml.asp",false);
+				xmlhttp.send();
+				xmlDoc=xmlhttp.responseXML;
+				
+				var output=" ";
+				var x=xmlDoc.getElementsByTagName("Message");
+				var i;
+				for (i=0;i<x.length;i++) {
+				
+					if (x[i].getElementsByTagName("MessageBody")[0].childNodes.length){
+						output +=(x[i].getElementsByTagName("MessageBody")[0].childNodes[0].nodeValue + "<br>");
+					}
+					output += "<hr />"
+					}
+					document.getElementById('displayText').innerHTML = output;
+					
+				}
+			
+	</script>
+</center>
+
+</body>
+</html>
