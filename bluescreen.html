@@ -171,7 +171,8 @@
 				{// code for IE6, IE5
 					xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 				}
-				xmlhttp.open("GET","https://cors-anywhere.herokuapp.com/https://www2.wb.psu.edu/messageboard/cancelxml.asp",false);
+				// xmlhttp.open("GET","https://cors-anywhere.herokuapp.com/https://www2.wb.psu.edu/messageboard/cancelxml.asp",false);
+				xmlhttp.open("GET","https://www2.wb.psu.edu/messageboard/cancelxml.asp",false);
 				xmlhttp.send();
 				xmlDoc=xmlhttp.responseXML;
 				
