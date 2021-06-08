@@ -47,7 +47,7 @@
 		
 		
 		<!-- Bluescreen Messages Button -->
-		<input type='button' class='btn btn-lg btn-primary' value='Bluescreen Messagez' onclick='bsMsg()'; />
+		<input type='button' class='btn btn-lg btn-primary' value='Bluescreen Messages' onclick='bsMsg()'; />
 
 		<!-- Class Cancellations Button -->
 		<input type='button' class='btn btn-lg btn-primary' value='Class Cancellations' onclick='classCancel()'; />
@@ -171,8 +171,7 @@
 				{// code for IE6, IE5
 					xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 				}
-				// xmlhttp.open("GET","https://cors-anywhere.herokuapp.com/https://www2.wb.psu.edu/messageboard/cancelxml.asp",false);
-				xmlhttp.open("GET","https://www2.wb.psu.edu/messageboard/cancelxml.asp",true);
+				xmlhttp.open("GET","https://cors-anywhere.herokuapp.com/https://www2.wb.psu.edu/messageboard/cancelxml.asp",false);
 				xmlhttp.send();
 				xmlDoc=xmlhttp.responseXML;
 				
